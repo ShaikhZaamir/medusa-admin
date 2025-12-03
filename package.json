@@ -26,7 +26,9 @@
     "@medusajs/admin-sdk": "2.11.3",
     "@medusajs/cli": "2.11.3",
     "@medusajs/framework": "2.11.3",
-    "@medusajs/medusa": "2.11.3"
+    "@medusajs/medusa": "2.11.3",
+    "@medusajs/medusa-js": "^6.1.10",
+    "razorpay": "^2.9.6"
   },
   "devDependencies": {
     "@medusajs/test-utils": "2.11.3",
