@@ -25,6 +25,7 @@
   "dependencies": {
     "@medusajs/admin-sdk": "2.11.3",
     "@medusajs/cli": "2.11.3",
+    "@medusajs/file-s3": "^2.12.1",
     "@medusajs/framework": "2.11.3",
     "@medusajs/medusa": "2.11.3",
     "@medusajs/medusa-js": "^6.1.10",

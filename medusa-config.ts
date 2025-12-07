@@ -1,8 +1,8 @@
-import { loadEnv, defineConfig } from '@medusajs/framework/utils'
+import { loadEnv, defineConfig } from "@medusajs/framework/utils";
 
-loadEnv(process.env.NODE_ENV || 'development', process.cwd())
+loadEnv(process.env.NODE_ENV || "development", process.cwd());
 
-const isDev = process.env.NODE_ENV === "development"
+const isDev = process.env.NODE_ENV === "development";
 
 module.exports = defineConfig({
   projectConfig: {
@@ -21,8 +21,11 @@ module.exports = defineConfig({
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
     },
 
-    workerMode: process.env.MEDUSA_WORKER_MODE as "shared" | "worker" | "server",
-    
+    workerMode: process.env.MEDUSA_WORKER_MODE as
+      | "shared"
+      | "worker"
+      | "server",
+
     redisUrl: isDev ? undefined : process.env.REDIS_URL,
   },
 
@@ -35,49 +38,64 @@ module.exports = defineConfig({
   modules: isDev
     ? []
     : [
-      {
-        resolve: "@medusajs/medusa/caching",
-        options: {
-          providers: [
-            {
-              resolve: "@medusajs/caching-redis",
-              id: "caching-redis",
-              is_default: true,
-              options: {
-                redisUrl: process.env.CACHE_REDIS_URL,
+        {
+          resolve: "@medusajs/medusa/caching",
+          options: {
+            providers: [
+              {
+                resolve: "@medusajs/caching-redis",
+                id: "caching-redis",
+                is_default: true,
+                options: {
+                  redisUrl: process.env.CACHE_REDIS_URL,
+                },
               },
-            },
-          ],
-        },
-      },
-      {
-        resolve: "@medusajs/medusa/event-bus-redis",
-        options: {
-          redisUrl: process.env.REDIS_URL,
-        },
-      },
-      {
-        resolve: "@medusajs/medusa/workflow-engine-redis",
-        options: {
-          redis: {
-            url: process.env.REDIS_URL,
+            ],
           },
         },
-      },
-      {
-        resolve: "@medusajs/medusa/locking",
-        options: {
-          providers: [
-            {
-              resolve: "@medusajs/medusa/locking-redis",
-              id: "locking-redis",
-              is_default: true,
-              options: {
-                redisUrl: process.env.LOCKING_REDIS_URL,
-              },
-            },
-          ],
+        {
+          resolve: "@medusajs/medusa/event-bus-redis",
+          options: {
+            redisUrl: process.env.REDIS_URL,
+          },
         },
-      },
-    ],
-})
+        {
+          resolve: "@medusajs/medusa/workflow-engine-redis",
+          options: {
+            redis: {
+              url: process.env.REDIS_URL,
+            },
+          },
+        },
+        {
+          resolve: "@medusajs/medusa/locking",
+          options: {
+            providers: [
+              {
+                resolve: "@medusajs/medusa/locking-redis",
+                id: "locking-redis",
+                is_default: true,
+                options: {
+                  redisUrl: process.env.LOCKING_REDIS_URL,
+                },
+              },
+            ],
+          },
+        },
+        {
+          resolve: "@medusajs/medusa-plugin-file",
+          options: {},
+        },
+        {
+          resolve: "@medusajs/file-s3",
+          options: {
+            s3_url: process.env.S3_URL,
+            bucket: process.env.S3_BUCKET,
+            region: process.env.S3_REGION, // Supabase gives "ap-south-1"
+            access_key_id: process.env.S3_ACCESS_KEY,
+            secret_access_key: process.env.S3_SECRET_KEY,
+            force_path_style: true, // REQUIRED for Supabase
+          },
+        },
+      ],
+});

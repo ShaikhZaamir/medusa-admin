@@ -2026,6 +2026,15 @@
     "@aws-sdk/s3-request-presigner" "^3.556.0"
     ulid "^2.3.0"
 
+"@medusajs/file-s3@^2.12.1":
+  version "2.12.1"
+  resolved "https://registry.yarnpkg.com/@medusajs/file-s3/-/file-s3-2.12.1.tgz#da14580dc147cb845ea721234eae6c3f0e4ae6e3"
+  integrity sha512-kku9P2nwC6dtFTOD94okyujnGDTz5TPtwxU84POb9UTKfpr4tLf3gsXny5ZUZVPReAnfbhgDlYz5NPrTQvn1Wg==
+  dependencies:
+    "@aws-sdk/client-s3" "^3.556.0"
+    "@aws-sdk/s3-request-presigner" "^3.556.0"
+    ulid "^2.3.0"
+
 "@medusajs/file@2.11.3":
   version "2.11.3"
   resolved "https://registry.npmjs.org/@medusajs/file/-/file-2.11.3.tgz"
