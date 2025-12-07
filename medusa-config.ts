@@ -83,10 +83,6 @@ module.exports = defineConfig({
           },
         },
         {
-          resolve: "@medusajs/medusa-plugin-file",
-          options: {},
-        },
-        {
           resolve: "@medusajs/file-s3",
           options: {
             s3_url: process.env.S3_URL,
