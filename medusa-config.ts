@@ -82,16 +82,16 @@ module.exports = defineConfig({
             ],
           },
         },
-        {
-          resolve: "@medusajs/file-s3",
-          options: {
-            s3_url: process.env.S3_URL,
-            bucket: process.env.S3_BUCKET,
-            region: process.env.S3_REGION, // Supabase gives "ap-south-1"
-            access_key_id: process.env.S3_ACCESS_KEY,
-            secret_access_key: process.env.S3_SECRET_KEY,
-            force_path_style: true, // REQUIRED for Supabase
-          },
-        },
+        // {
+        //   resolve: "@medusajs/file-s3",
+        //   options: {
+        //     s3_url: process.env.S3_URL,
+        //     bucket: process.env.S3_BUCKET,
+        //     region: process.env.S3_REGION, // Supabase gives "ap-south-1"
+        //     access_key_id: process.env.S3_ACCESS_KEY,
+        //     secret_access_key: process.env.S3_SECRET_KEY,
+        //     force_path_style: true, // REQUIRED for Supabase
+        //   },
+        // },
       ],
 });
